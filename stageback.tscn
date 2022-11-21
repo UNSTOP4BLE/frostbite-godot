@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/chartparser.gd" type="Script" id=1]
 [ext_resource path="res://scripts/playstate.gd" type="Script" id=2]
+[ext_resource path="res://frostbite/res/gold/Cold_Gold.png" type="Texture" id=3]
+[ext_resource path="res://frostbite/res/gold/gold-up.tres" type="Animation" id=4]
+[ext_resource path="res://frostbite/res/gold/gold-leftmiss.tres" type="Animation" id=5]
+[ext_resource path="res://frostbite/res/gold/gold-right.tres" type="Animation" id=6]
+[ext_resource path="res://frostbite/res/gold/gold-rightmiss.tres" type="Animation" id=7]
+[ext_resource path="res://frostbite/res/gold/gold-left.tres" type="Animation" id=8]
+[ext_resource path="res://frostbite/res/gold/gold-upmiss.tres" type="Animation" id=9]
+[ext_resource path="res://frostbite/res/gold/gold-idle.tres" type="Animation" id=10]
+[ext_resource path="res://frostbite/res/gold/gold-down.tres" type="Animation" id=11]
+[ext_resource path="res://frostbite/res/gold/gold-downmiss.tres" type="Animation" id=12]
+[ext_resource path="res://scripts/notes.gd" type="Script" id=13]
 
 [node name="stage" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,3 +23,34 @@ script = ExtResource( 1 )
 
 [node name="Playstate" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="Gold" type="Sprite" parent="Playstate"]
+position = Vector2( 260, 394 )
+texture = ExtResource( 3 )
+offset = Vector2( 52, 40 )
+region_enabled = true
+region_rect = Rect2( 1000, 0, 452, 508 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Playstate/Gold"]
+anims/gold-down = ExtResource( 11 )
+anims/gold-downmiss = ExtResource( 12 )
+anims/gold-idle = ExtResource( 10 )
+anims/gold-left = ExtResource( 8 )
+anims/gold-leftmiss = ExtResource( 5 )
+anims/gold-right = ExtResource( 6 )
+anims/gold-rightmiss = ExtResource( 7 )
+anims/gold-up = ExtResource( 4 )
+anims/gold-upmiss = ExtResource( 9 )
+
+[node name="Camera2D" type="Camera2D" parent="Playstate"]
+position = Vector2( 681, 100 )
+offset = Vector2( -0.86, -0.111 )
+current = true
+zoom = Vector2( 1.7, 1.7 )
+
+[node name="notes" type="Sprite" parent="Playstate"]
+offset = Vector2( 52, 40 )
+region_rect = Rect2( 1000, 0, 452, 508 )
+script = ExtResource( 13 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Playstate/notes"]

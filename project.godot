@@ -14,6 +14,10 @@ config/name="Frostbite Test"
 run/main_scene="res://stageback.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/sparrowatlas_editor/plugin.cfg" )
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
