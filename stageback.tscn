@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/chartparser.gd" type="Script" id=1]
 [ext_resource path="res://scripts/playstate.gd" type="Script" id=2]
@@ -12,7 +12,8 @@
 [ext_resource path="res://frostbite/res/gold/gold-idle.tres" type="Animation" id=10]
 [ext_resource path="res://frostbite/res/gold/gold-down.tres" type="Animation" id=11]
 [ext_resource path="res://frostbite/res/gold/gold-downmiss.tres" type="Animation" id=12]
-[ext_resource path="res://scripts/notes.gd" type="Script" id=13]
+[ext_resource path="res://frostbite/res/hud/left-dummy.tres" type="Animation" id=13]
+[ext_resource path="res://frostbite/res/hud/NOTE_assets.png" type="Texture" id=17]
 
 [node name="stage" type="Node2D"]
 script = ExtResource( 1 )
@@ -29,7 +30,7 @@ position = Vector2( 260, 394 )
 texture = ExtResource( 3 )
 offset = Vector2( 52, 40 )
 region_enabled = true
-region_rect = Rect2( 1000, 0, 452, 508 )
+region_rect = Rect2( 505, 0, 445, 502 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Playstate/Gold"]
 anims/gold-down = ExtResource( 11 )
@@ -48,9 +49,44 @@ offset = Vector2( -0.86, -0.111 )
 current = true
 zoom = Vector2( 1.7, 1.7 )
 
-[node name="notes" type="Sprite" parent="Playstate"]
-offset = Vector2( 52, 40 )
-region_rect = Rect2( 1000, 0, 452, 508 )
-script = ExtResource( 13 )
+[node name="PDummyNotes" type="Sprite" parent="Playstate"]
+position = Vector2( 355, -78 )
+region_enabled = true
+region_rect = Rect2( 808, 238, 155, 157 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Playstate/notes"]
+[node name="0" type="Sprite" parent="Playstate/PDummyNotes"]
+position = Vector2( -16, -35 )
+texture = ExtResource( 17 )
+region_enabled = true
+region_rect = Rect2( 488, 238, 155, 158 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Playstate/PDummyNotes/0"]
+root_node = NodePath("../..")
+anims/left-dummy = ExtResource( 13 )
+
+[node name="1" type="Sprite" parent="Playstate/PDummyNotes"]
+position = Vector2( -217, -170 )
+texture = ExtResource( 17 )
+region_enabled = true
+region_rect = Rect2( 647, 238, 157, 155 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Playstate/PDummyNotes/1"]
+root_node = NodePath("../..")
+
+[node name="2" type="Sprite" parent="Playstate/PDummyNotes"]
+position = Vector2( 112, -170 )
+texture = ExtResource( 17 )
+region_enabled = true
+region_rect = Rect2( 808, 238, 155, 157 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Playstate/PDummyNotes/2"]
+root_node = NodePath("../..")
+
+[node name="3" type="Sprite" parent="Playstate/PDummyNotes"]
+position = Vector2( -393, -170 )
+texture = ExtResource( 17 )
+region_enabled = true
+region_rect = Rect2( 488, 238, 155, 158 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Playstate/PDummyNotes/3"]
+root_node = NodePath("../..")
